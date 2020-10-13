@@ -40,6 +40,8 @@ class Compose(object):
             data = t(data)
             if data is None:
                 return None
+            # print("After " + str(t.__class__))
+            # print(data['img'].shape)
         return data
 
     def __repr__(self):

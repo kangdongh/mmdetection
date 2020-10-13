@@ -94,6 +94,7 @@ class Darknet(nn.Module):
     def __init__(self,
                  depth=53,
                  out_indices=(3, 4, 5),
+                 in_channels=3,
                  frozen_stages=-1,
                  conv_cfg=None,
                  norm_cfg=dict(type='BN', requires_grad=True),
@@ -109,7 +110,7 @@ class Darknet(nn.Module):
 
         cfg = dict(conv_cfg=conv_cfg, norm_cfg=norm_cfg, act_cfg=act_cfg)
 
-        self.conv1 = ConvModule(3, 32, 3, padding=1, **cfg)
+        self.conv1 = ConvModule(in_channels, 32, 3, padding=1, **cfg)
 
         self.cr_blocks = ['conv1']
         for i, n_layers in enumerate(self.layers):
