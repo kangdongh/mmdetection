@@ -60,7 +60,8 @@ class LoadImageFromFile(object):
         img = mmcv.imfrombytes(img_bytes, flag=self.color_type, backend='pillow')
         if self.to_float32:
             img = img.astype(np.float32)
-
+        if len(img.shape) == 2:
+            img = img[:, :, np.newaxis]
         results['filename'] = filename
         results['ori_filename'] = results['img_info']['filename']
         results['img'] = img

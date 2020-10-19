@@ -16,16 +16,13 @@ from .coco import CocoDataset
 
 
 @DATASETS.register_module()
-class KaistDataset(CocoDataset):
+class KittiDataset(CocoDataset):
 
-    #CLASSES = ('person', 'people', 'cyclist')
-    CLASSES = ('pedestrian')
+    CLASSES = ('Car', 'Van', 'Truck', 'Pedestrian', 'Person_sitting', 'Cyclist', 'Tram', 'Misc')
     def evaluate(self, results, iou_thrs = [0.5], **kwargs):
         return super().evaluate(
                 results,
                 iou_thrs = iou_thrs,
                 **kwargs,
                 )
-
-
 
